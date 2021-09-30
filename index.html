@@ -1,13 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todolist
-    </title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Todolist</title>
+  </head>
+  <body>
+    <h1>todos</h1>
+    <div id="content-container">
+      <form>
+        <button type="button"></button>
+        <input type="text" name="todo" id="input-todo" />
+      </form>
+      <ul id="todos"></ul>
+      <div>
+        <span>0 item left</span>
+        <div id="filter-todos">
+          <button id="filter-all">All</button>
+          <button id="filter-active">Active</button>
+          <button id="filter-completed">Completed</button>
+        </div>
+        <button id="clear-completed">Clear completed</button>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        <small>Double-click to edit a todo</small>
+      </p>
+      <p>
+        <small>Written by Jonas and Johan</small>
+      </p>
+      <p>
+        <small
+          >Part of <a href="https://teknikhogskolan.se/">PUVSNV21</a></small
+        >
+      </p>
+    </footer>
+  </body>
 </html>
