@@ -22,11 +22,15 @@ function addTodo(){
     //Create checkbox for mark as complete
     const checkbox = document.createElement("input");
     checkbox.setAttribute("type", "checkbox")
+    checkbox.addEventListener("click", () => {
+        listElement.classList.toggle("completed");
+    })
 
     //Create input for input value
     const inputTodo = document.createElement("input");
     inputTodo.setAttribute("type", "text");
     inputTodo.value = input.value;
+    inputTodo.disabled = true;
 
     //Create delete button
     const buttonDelete = document.createElement("button")
