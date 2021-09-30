@@ -17,16 +17,37 @@ function addTodo(){
     const listElement = document.createElement("li");
 
     //Create container for todos and delete and checkbox
+    const container = document.createElement("div");
 
     //Create checkbox for mark as complete
+    const checkbox = document.createElement("input");
+    checkbox.setAttribute("type", "checkbox")
 
     //Create input for input value
+    const inputTodo = document.createElement("input");
+    inputTodo.setAttribute("type", "text");
+    inputTodo.value = input.value;
 
     //Create delete button
+    const buttonDelete = document.createElement("button")
+    buttonDelete.type = "button";
+    const deleteIcon = document.createElement("i");
+    deleteIcon.classList.add("fas", "fa-times", "fa-2x");
+    buttonDelete.appendChild(deleteIcon);
+    //Delete button event
+    buttonDelete.addEventListener("click", () => {
+        listElement.remove();
+    })
+
 
     //Append all previous objects to listelement
+    container.appendChild(checkbox);
+    container.appendChild(inputTodo);
+    container.appendChild(buttonDelete);
 
     //Apend to list of todos
+    listElement.appendChild(container);
+    todos.appendChild(listElement);
 }
 
 // Update todo list
@@ -46,7 +67,7 @@ function addTodo(){
 /*==========Event handlers==========*/
 // Submit form
 form.addEventListener("submit", (e) => {
-  e.defaultPrevented();
+  e.preventDefault();
 
   addTodo();
 });
