@@ -11,13 +11,13 @@
   <body>
     <h1>todos</h1>
     <div id="content-container">
-      <form>
-        <button type="button"></button>
+      <form id="form">
+        <button type="button" id="complete-all-btn"></button>
         <input type="text" name="todo" id="input-todo" />
       </form>
       <ul id="todos"></ul>
-      <div class="hidden">
-        <span>0 item left</span>
+      <div id="footer" class="hidden">
+        <span id="todos-remaining">0 item left</span>
         <div id="filter-todos">
           <button id="filter-all">All</button>
           <button id="filter-active">Active</button>
