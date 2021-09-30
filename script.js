@@ -24,6 +24,7 @@ function addTodo(){
     checkbox.setAttribute("type", "checkbox")
     checkbox.addEventListener("click", () => {
         listElement.classList.toggle("completed");
+        updateTodo();
     })
 
     //Create input for input value
@@ -52,11 +53,77 @@ function addTodo(){
     //Apend to list of todos
     listElement.appendChild(container);
     todos.appendChild(listElement);
+
+    updateTodo();
 }
 
 // Update todo list
+function updateTodo() {
+    //Get all list elements from unordered list
+    const listElements = document.querySelectorAll("li");
+
+    //How many of the list elements has the class completed
+    // let count = 0;
+    // listElements.forEach(element => {
+    //     if(!element.classList.contains("completed")){
+    //         count++;
+    //     }
+    // })
+    const completedElements = document.querySelectorAll(".completed").length;
+    const count = listElements.length - completedElements.length;
+
+    //Update todos remaining
+    todosRemaining.textContent = `${count} item${count > 1 ? "s" : ""} left`
+
+    //If there is any todo, remove hidden class from footer
+    if(listElements.length > 0) {
+        footer.classList.remove("hidden");
+    }
+
+    //If there is a completed todo, remove hidden from clear-completed
+    if(completedElements.length > 0) {
+        buttonClearCompleted.classList.remove("hidden");
+    }
+
+
+    //Checks the checkbox if it is completed
+    listElements.forEach(element => {
+        if(element.classList.contains("completed")){
+            //called first child of first child which should be checkbox
+            element.children[0].children[0].checked = true;
+        } else {
+            element.children[0].children[0].checked = false;
+        }
+    })
+}
 
 // Toggle all todos as completed
+function toggleAllTodos() {
+    //Get all list elements from unordered list
+    const listElements = document.querySelectorAll("li");
+    const countCompletedElements = document.querySelectorAll(".completed").length;
+
+    //if all elements is not completed
+    //Add class completed on all
+    if (listElements.length === countCompletedElements) {
+        listElements.forEach((element) => {
+            if(element.classList.contains("completed")){
+                element.classList.remove("completed");
+            }
+        })
+    } else {
+        listElements.forEach((element) => {
+        if(!element.classList.contains("completed")){
+            element.classList.add("completed");
+        }
+    })
+
+    }
+
+    //else remove all completed
+
+    updateTodo();
+}
 
 // Toggle completed
 
@@ -75,3 +142,5 @@ form.addEventListener("submit", (e) => {
 
   addTodo();
 });
+
+buttonCompleteAll.addEventListener("click", toggleAllTodos)
