@@ -40,7 +40,14 @@ function addTodo() {
   const inputTodo = document.createElement("input");
   inputTodo.setAttribute("type", "text");
   inputTodo.value = input.value;
-  inputTodo.disabled = true;
+  inputTodo.readOnly = true;
+  inputTodo.addEventListener("dblclick", () => {
+    // inputTodo.removeAttribute("readOnly");
+    inputTodo.readOnly = false;
+  })
+  inputTodo.addEventListener("focusout", () => {
+    inputTodo.readOnly = true;
+  })
 
   //Create delete button
   const buttonDelete = document.createElement("button");
