@@ -11,21 +11,27 @@ const todosRemaining = document.getElementById("todos-remaining");
 const buttonClearCompleted = document.getElementById("clear-completed");
 
 /*==========Functions==========*/
+
+function loadTodos() {
+  const localTodos = JSON.parse(localStorage.getItem("todos"));
+  if(localTodos.length > 0){
+    localTodos.forEach(item => {
+      if(item.text.length > 0) {
+        addTodo(item.text, item.completed);
+      }
+    })
+  }
+}
 // Add todo
-function addTodo() {
+function addTodo(inputValue, completed = false) {
   //Create listelement
   const listElement = document.createElement("li");
+  if(completed){
+    listElement.classList.add("completed");
+  }
 
   //Create container for todos and delete and checkbox
   const container = document.createElement("div");
-  // container.style.display = "flex";
-  // container.style.alignItems = "center";
-  // container.style.justifyContent = "flex-start";
-  // container.style.width = "34rem";
-  // container.style.height = "5rem";
-  // container.style.margin = "0 auto";
-  // container.style.backgroundColor = "white";
-  // container.style.border = "1px solid rgba(192, 192, 192, 0.4)";
 
   //Create checkbox for mark as complete
   const checkbox = document.createElement("input");
@@ -39,7 +45,7 @@ function addTodo() {
   //Create input for input value
   const inputTodo = document.createElement("input");
   inputTodo.setAttribute("type", "text");
-  inputTodo.value = input.value;
+  inputTodo.value = inputValue;
   inputTodo.readOnly = true;
   inputTodo.addEventListener("dblclick", () => {
     // inputTodo.removeAttribute("readOnly");
@@ -84,6 +90,16 @@ function addTodo() {
 function updateTodo() {
   //Get all list elements from unordered list
   const listElements = document.querySelectorAll("li");
+
+  const todosArray = [];
+
+  listElements.forEach(element => {
+    todosArray.push({
+      text: element.children[0].children[1].value,
+      completed: element.classList.contains("completed") ? true : false})
+    });
+  
+    localStorage.setItem("todos", JSON.stringify(todosArray));
 
   //How many of the list elements has the class completed
   const completedElements = document.querySelectorAll(".completed").length;
@@ -201,8 +217,8 @@ function removeAllCompleted() {
 // Submit form
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-
-  addTodo();
+  
+  addTodo(input.value);
 });
 
 buttonCompleteAll.addEventListener("click", toggleAllTodos);
@@ -224,3 +240,5 @@ window.addEventListener("hashchange", (e) => {
 
 
 buttonClearCompleted.addEventListener("click", removeAllCompleted);
+
+loadTodos();
