@@ -86,8 +86,10 @@ function updateTodo() {
   }
 
   //If there is a completed todo, remove hidden from clear-completed
-  if (completedElements.length > 0) {
+  if (completedElements > 0) {
     buttonClearCompleted.classList.remove("hidden");
+  } else {
+    buttonClearCompleted.classList.add("hidden");
   }
 
   //Checks the checkbox if it is completed
@@ -136,6 +138,8 @@ function removeFilter() {
       element.classList.remove("hidden");
     }
   });
+  updateTodo();
+
 }
 // Filter by active
 function filterByActive() {
@@ -148,6 +152,8 @@ function filterByActive() {
       element.classList.remove("hidden");
     }
   });
+  updateTodo();
+
 }
 // Filter by completed
 function filterByCompleted() {
@@ -164,6 +170,17 @@ function filterByCompleted() {
   updateTodo();
 }
 // Clear all marked as completed
+function removeAllCompleted() {
+  const listElement = document.querySelectorAll("li");
+
+  listElement.forEach((element) => {
+    if (element.classList.contains("completed")) {
+      element.remove();
+    }
+  });
+  updateTodo();
+
+}
 
 /*==========Event handlers==========*/
 // Submit form
@@ -178,3 +195,5 @@ buttonCompleteAll.addEventListener("click", toggleAllTodos);
 buttonFilterNone.addEventListener("click", removeFilter);
 buttonFilterActive.addEventListener("click", filterByActive);
 buttonFilterCompleted.addEventListener("click", filterByCompleted);
+
+buttonClearCompleted.addEventListener("click", removeAllCompleted)
