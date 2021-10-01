@@ -4,7 +4,7 @@ const input = document.getElementById("input-todo");
 const todos = document.getElementById("todos");
 const buttonCompleteAll = document.getElementById("complete-all-btn");
 const footer = document.getElementById("footer");
-const buttonFilterAll = document.getElementById("filter-all");
+const buttonFilterNone = document.getElementById("filter-all");
 const buttonFilterActive = document.getElementById("filter-active");
 const buttonFilterCompleted = document.getElementById("filter-completed");
 const todosRemaining = document.getElementById("todos-remaining");
@@ -18,19 +18,20 @@ function addTodo() {
 
   //Create container for todos and delete and checkbox
   const container = document.createElement("div");
-  container.style.display = "flex";
-  container.style.alignItems = "center";
-  container.style.justifyContent = "flex-start";
-  container.style.width = "34rem";
-  container.style.height = "5rem";
-  container.style.margin = "0 auto";
-  container.style.backgroundColor = "white";
-  container.style.border = "1px solid rgba(192, 192, 192, 0.4)";
+  // container.style.display = "flex";
+  // container.style.alignItems = "center";
+  // container.style.justifyContent = "flex-start";
+  // container.style.width = "34rem";
+  // container.style.height = "5rem";
+  // container.style.margin = "0 auto";
+  // container.style.backgroundColor = "white";
+  // container.style.border = "1px solid rgba(192, 192, 192, 0.4)";
 
   //Create checkbox for mark as complete
   const checkbox = document.createElement("input");
   checkbox.setAttribute("type", "checkbox");
   checkbox.addEventListener("click", () => {
+    // Toggle completed
     listElement.classList.toggle("completed");
     updateTodo();
   });
@@ -63,8 +64,8 @@ function addTodo() {
 
   updateTodo();
 
-  document.getElementById("complete-all-btn").style.opacity = 0.4;
-  input.value = "";
+  // document.getElementById("complete-all-btn").style.opacity = 0.4;
+  // input.value = "";
 }
 
 // Update todo list
@@ -73,14 +74,8 @@ function updateTodo() {
   const listElements = document.querySelectorAll("li");
 
   //How many of the list elements has the class completed
-  // let count = 0;
-  // listElements.forEach(element => {
-  //     if(!element.classList.contains("completed")){
-  //         count++;
-  //     }
-  // })
   const completedElements = document.querySelectorAll(".completed").length;
-  const count = listElements.length - completedElements.length;
+  const count = listElements.length - completedElements;
 
   //Update todos remaining
   todosRemaining.textContent = `${count} item${count > 1 ? "s" : ""} left`;
@@ -121,6 +116,7 @@ function toggleAllTodos() {
       }
     });
   } else {
+    //else remove all completed
     listElements.forEach((element) => {
       if (!element.classList.contains("completed")) {
         element.classList.add("completed");
@@ -128,19 +124,45 @@ function toggleAllTodos() {
     });
   }
 
-  //else remove all completed
-
   updateTodo();
 }
 
-// Toggle completed
+// No filter
+function removeFilter() {
+  const listElement = document.querySelectorAll("li");
 
-// Remove filter
-
+  listElement.forEach((element) => {
+    if (element.classList.contains("hidden")) {
+      element.classList.remove("hidden");
+    }
+  });
+}
 // Filter by active
+function filterByActive() {
+  const listElement = document.querySelectorAll("li");
 
+  listElement.forEach((element) => {
+    if (element.classList.contains("completed")) {
+      element.classList.add("hidden");
+    } else {
+      element.classList.remove("hidden");
+    }
+  });
+}
 // Filter by completed
+function filterByCompleted() {
+  const listElement = document.querySelectorAll("li");
 
+  listElement.forEach((element) => {
+    if (!element.classList.contains("completed")) {
+      element.classList.add("hidden");
+    } else {
+      element.classList.remove("hidden");
+    }
+  });
+
+  updateTodo();
+}
 // Clear all marked as completed
 
 /*==========Event handlers==========*/
@@ -152,3 +174,7 @@ form.addEventListener("submit", (e) => {
 });
 
 buttonCompleteAll.addEventListener("click", toggleAllTodos);
+
+buttonFilterNone.addEventListener("click", removeFilter);
+buttonFilterActive.addEventListener("click", filterByActive);
+buttonFilterCompleted.addEventListener("click", filterByCompleted);
