@@ -150,6 +150,9 @@ function removeFilter() {
       element.classList.remove("hidden");
     }
   });
+
+  location.hash = "";
+
   updateTodo();
 }
 // Filter by active
@@ -163,6 +166,8 @@ function filterByActive() {
       element.classList.remove("hidden");
     }
   });
+  location.hash = "active";
+
   updateTodo();
 }
 // Filter by completed
@@ -177,6 +182,7 @@ function filterByCompleted() {
     }
   });
 
+  location.hash = "completed";
   updateTodo();
 }
 // Clear all marked as completed
@@ -205,8 +211,7 @@ buttonFilterNone.addEventListener("click", removeFilter);
 buttonFilterActive.addEventListener("click", filterByActive);
 buttonFilterCompleted.addEventListener("click", filterByCompleted);
 window.addEventListener("hashchange", (e) => {
-  const urlstring = e.newURL.toString();
-  const hash = urlstring.substring(urlstring.indexOf("#") + 1).toLowerCase();
+  const hash = location.hash.toString().substring(1);
   console.log(hash);
   if(hash === "active") {
     filterByActive();
