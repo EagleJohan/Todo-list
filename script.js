@@ -48,6 +48,12 @@ function addTodo() {
   inputTodo.addEventListener("focusout", () => {
     inputTodo.readOnly = true;
   })
+  inputTodo.addEventListener("keyup", (e) => {
+    if(e.key === "Enter") {
+    inputTodo.readOnly = true;
+
+    }
+  })
 
   //Create delete button
   const buttonDelete = document.createElement("button");
