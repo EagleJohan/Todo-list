@@ -44,16 +44,15 @@ function addTodo() {
   inputTodo.addEventListener("dblclick", () => {
     // inputTodo.removeAttribute("readOnly");
     inputTodo.readOnly = false;
-  })
+  });
   inputTodo.addEventListener("focusout", () => {
     inputTodo.readOnly = true;
-  })
+  });
   inputTodo.addEventListener("keyup", (e) => {
-    if(e.key === "Enter") {
-    inputTodo.readOnly = true;
-
+    if (e.key === "Enter") {
+      inputTodo.readOnly = true;
     }
-  })
+  });
 
   //Create delete button
   const buttonDelete = document.createElement("button");
@@ -152,7 +151,6 @@ function removeFilter() {
     }
   });
   updateTodo();
-
 }
 // Filter by active
 function filterByActive() {
@@ -166,7 +164,6 @@ function filterByActive() {
     }
   });
   updateTodo();
-
 }
 // Filter by completed
 function filterByCompleted() {
@@ -192,7 +189,6 @@ function removeAllCompleted() {
     }
   });
   updateTodo();
-
 }
 
 /*==========Event handlers==========*/
@@ -208,5 +204,18 @@ buttonCompleteAll.addEventListener("click", toggleAllTodos);
 buttonFilterNone.addEventListener("click", removeFilter);
 buttonFilterActive.addEventListener("click", filterByActive);
 buttonFilterCompleted.addEventListener("click", filterByCompleted);
+window.addEventListener("hashchange", (e) => {
+  const urlstring = e.newURL.toString();
+  const hash = urlstring.substring(urlstring.indexOf("#") + 1).toLowerCase();
+  console.log(hash);
+  if(hash === "active") {
+    filterByActive();
+  } else if(hash === "completed") {
+    filterByCompleted();
+  } else {
+    removeFilter();
+  }
+})
 
-buttonClearCompleted.addEventListener("click", removeAllCompleted)
+
+buttonClearCompleted.addEventListener("click", removeAllCompleted);
