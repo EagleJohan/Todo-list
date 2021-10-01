@@ -18,15 +18,7 @@ function addTodo() {
 
   //Create container for todos and delete and checkbox
   const container = document.createElement("div");
-  container.style.display = "flex";
-  container.style.alignItems = "center";
-  container.style.justifyContent = "flex-start";
-  container.style.width = "34rem";
-  container.style.height = "5rem";
-  container.style.margin = "0 auto";
-  container.style.backgroundColor = "white";
-  container.style.border = "1px solid rgba(192, 192, 192, 0.4)";
-
+  
   //Create checkbox for mark as complete
   const checkbox = document.createElement("input");
   checkbox.setAttribute("type", "checkbox");
@@ -152,3 +144,4 @@ form.addEventListener("submit", (e) => {
 });
 
 buttonCompleteAll.addEventListener("click", toggleAllTodos);
+
