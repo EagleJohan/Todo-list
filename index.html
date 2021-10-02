@@ -24,16 +24,18 @@
         <input type="text" name="todo" id="input-todo" placeholder="What needs to be done?" autocomplete="off"/>
       </form>
       <ul id="todos">
-        <li>
-          <div class="list-object">
-            <label for="completed-box" class="checkbox-container" >
-                <input type="checkbox" name="completed-box" class="completed-box">
-                <span class="checkmark"><i class="fas fa-check"></i></span>
-            </label>
-            <input type="text" name="reg-todo" class="reg-todo">
-            <button class="btn-delete" type="button"><i class="fas fa-times fa-2x"></i></button>
-          </div>
-        </li>
+        <template id="li-template">
+          <li>
+            <form class="list-object">
+              <label for="completed-box" class="checkbox-container" >
+                  <input type="checkbox" name="completed-box" class="completed-box">
+                  <span class="checkmark"><i class="fas fa-check"></i></span>
+              </label>
+              <input type="text" name="reg-todo" class="reg-todo">
+              <button class="btn-delete" type="button"><i class="fas fa-times fa-2x"></i></button>
+            </form>
+          </li>
+        </template>
       </ul>
       <div id="footer" class="hidden">
         <span id="todos-remaining">0 item left</span>
