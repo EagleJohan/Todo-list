@@ -9,6 +9,7 @@ const buttonFilterActive = document.getElementById("filter-active");
 const buttonFilterCompleted = document.getElementById("filter-completed");
 const todosRemaining = document.getElementById("todos-remaining");
 const buttonClearCompleted = document.getElementById("clear-completed");
+const count = 0;
 
 /*==========Functions==========*/
 
@@ -46,9 +47,14 @@ function addTodo(inputValue, completed = false) {
   let regTodos = document.querySelectorAll(".reg-todo");
   let lastRegTodo = regTodos[regTodos.length - 1];
 
+  let checkmarks = document.querySelectorAll(".checkmark");
+  let lastCheckmark = checkmarks[checkmarks.length - 1];
+
   lastChkBox.addEventListener("click", () => {
     // Toggle completed
     lastListEl.classList.toggle("completed");
+    lastCheckmark.classList.toggle("checkedmark");
+
     updateTodo();
   });
 
@@ -136,6 +142,10 @@ function toggleAllTodos() {
     listElements.forEach((element) => {
       if (element.classList.contains("completed")) {
         element.classList.remove("completed");
+        element.children[0].children[0].children[1].classList.toggle(
+          "checkedmark",
+          true
+        );
       }
     });
   } else {
@@ -143,6 +153,10 @@ function toggleAllTodos() {
     listElements.forEach((element) => {
       if (!element.classList.contains("completed")) {
         element.classList.add("completed");
+        element.children[0].children[0].children[1].classList.toggle(
+          "checkedmark",
+          false
+        );
       }
     });
   }
