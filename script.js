@@ -114,9 +114,9 @@ function updateTodo() {
 
   //If there is a completed todo, remove hidden from clear-completed
   if (completedElements > 0) {
-    buttonClearCompleted.classList.remove("hidden");
+    buttonClearCompleted.classList.remove("invisible");
   } else {
-    buttonClearCompleted.classList.add("hidden");
+    buttonClearCompleted.classList.add("invisible");
   }
 
   //Checks the checkbox if it is completed
