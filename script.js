@@ -32,54 +32,26 @@ function addTodo(inputValue, completed = false) {
   if (numberOfListObjects === 0) {
     uList.appendChild(template.cloneNode(true).content);
   } else {
-    console.log("Li already exists");
     uList.append(template.cloneNode(true).content);
   }
   let checkboxes = document.querySelectorAll(".completed-box");
-  console.log(checkboxes);
   let lastChkBox = checkboxes[checkboxes.length - 1];
-  console.log(lastChkBox + "test");
 
   let deletButtons = document.querySelectorAll(".btn-delete");
-  console.log(deletButtons);
   let lastDelBtn = deletButtons[deletButtons.length - 1];
-  console.log(lastDelBtn + "test");
 
   let listElements = document.querySelectorAll("li");
-  console.log(listElements);
   let lastListEl = listElements[listElements.length - 1];
-  console.log(lastListEl);
 
   let regTodos = document.querySelectorAll(".reg-todo");
-  console.log(regTodos);
   let lastRegTodo = regTodos[regTodos.length - 1];
-  console.log(lastRegTodo);
 
-  //Create listelement
-  //   const listElement = document.createElement("li");
-  const listElement = document.querySelector("li");
-
-  //   if (completed) {
-  //     listElement.classList.add("completed");
-  //   }
-
-  //Create container for todos and delete and checkbox
-  //   const container = document.createElement("div");
-  //Create checkbox for mark as complete
-  //   const checkbox = document.createElement("input");
-  //   checkbox.setAttribute("type", "checkbox");
-
-  const checkbox = document.querySelector(".completed-box");
   lastChkBox.addEventListener("click", () => {
     // Toggle completed
     lastListEl.classList.toggle("completed");
     updateTodo();
   });
 
-  //Create input for input value
-  //   const inputTodo = document.createElement("input");
-  const inputTodo = document.querySelector(".reg-todo");
-  //   inputTodo.setAttribute("type", "text");
   lastRegTodo.value = inputValue;
   lastRegTodo.readOnly = true;
   lastRegTodo.addEventListener("dblclick", () => {
@@ -95,27 +67,10 @@ function addTodo(inputValue, completed = false) {
     }
   });
 
-  //Create delete button
-  const buttonDelete = document.querySelector(".btn-delete");
-
-  //   buttonDelete.type = "button";
-  //   const deleteIcon = document.createElement("i");
-  //   deleteIcon.classList.add("fas", "fa-times", "fa-2x");
-  //   buttonDelete.appendChild(deleteIcon);
-
   //Delete button event
   lastDelBtn.addEventListener("click", () => {
     lastListEl.remove();
   });
-
-  //Append all previous objects to listelement
-  //   container.appendChild(checkbox);
-  //   container.appendChild(inputTodo);
-  //   container.appendChild(buttonDelete);
-
-  //Apend to list of todos
-  //   listElement.appendChild(container);
-  //   todos.appendChild(listElement);
 
   updateTodo();
 
