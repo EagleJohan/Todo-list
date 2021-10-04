@@ -144,7 +144,7 @@ function toggleAllTodos() {
         element.classList.remove("completed");
         element.children[0].children[0].children[1].classList.toggle(
           "checkedmark",
-          true
+          false
         );
       }
     });
@@ -155,7 +155,7 @@ function toggleAllTodos() {
         element.classList.add("completed");
         element.children[0].children[0].children[1].classList.toggle(
           "checkedmark",
-          false
+          true
         );
       }
     });
