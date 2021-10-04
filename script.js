@@ -26,7 +26,6 @@ function loadTodos() {
 function addTodo(inputValue, completed = false) {
   const template = document.getElementById("li-template");
   const uList = document.getElementById("todos");
-  const listElement = document.querySelector("li");
 
   const listObjects = document.querySelectorAll("li");
   const numberOfListObjects = listObjects.length;
@@ -34,10 +33,31 @@ function addTodo(inputValue, completed = false) {
     uList.appendChild(template.cloneNode(true).content);
   } else {
     console.log("Li already exists");
+    uList.append(template.cloneNode(true).content);
   }
+  let checkboxes = document.querySelectorAll(".completed-box");
+  console.log(checkboxes);
+  let lastChkBox = checkboxes[checkboxes.length - 1];
+  console.log(lastChkBox + "test");
+
+  let deletButtons = document.querySelectorAll(".btn-delete");
+  console.log(deletButtons);
+  let lastDelBtn = deletButtons[deletButtons.length - 1];
+  console.log(lastDelBtn + "test");
+
+  let listElements = document.querySelectorAll("li");
+  console.log(listElements);
+  let lastListEl = listElements[listElements.length - 1];
+  console.log(lastListEl);
+
+  let regTodos = document.querySelectorAll(".reg-todo");
+  console.log(regTodos);
+  let lastRegTodo = regTodos[regTodos.length - 1];
+  console.log(lastRegTodo);
 
   //Create listelement
   //   const listElement = document.createElement("li");
+  const listElement = document.querySelector("li");
 
   //   if (completed) {
   //     listElement.classList.add("completed");
@@ -48,10 +68,11 @@ function addTodo(inputValue, completed = false) {
   //Create checkbox for mark as complete
   //   const checkbox = document.createElement("input");
   //   checkbox.setAttribute("type", "checkbox");
+
   const checkbox = document.querySelector(".completed-box");
-  checkbox.addEventListener("click", () => {
+  lastChkBox.addEventListener("click", () => {
     // Toggle completed
-    listElement.classList.toggle("completed");
+    lastListEl.classList.toggle("completed");
     updateTodo();
   });
 
@@ -59,31 +80,32 @@ function addTodo(inputValue, completed = false) {
   //   const inputTodo = document.createElement("input");
   const inputTodo = document.querySelector(".reg-todo");
   //   inputTodo.setAttribute("type", "text");
-  inputTodo.value = inputValue;
-  inputTodo.readOnly = true;
-  inputTodo.addEventListener("dblclick", () => {
+  lastRegTodo.value = inputValue;
+  lastRegTodo.readOnly = true;
+  lastRegTodo.addEventListener("dblclick", () => {
     // inputTodo.removeAttribute("readOnly");
-    inputTodo.readOnly = false;
+    lastRegTodo.readOnly = false;
   });
-  inputTodo.addEventListener("focusout", () => {
-    inputTodo.readOnly = true;
+  lastRegTodo.addEventListener("focusout", () => {
+    lastRegTodo.readOnly = true;
   });
-  inputTodo.addEventListener("keyup", (e) => {
+  lastRegTodo.addEventListener("keyup", (e) => {
     if (e.key === "Enter") {
-      inputTodo.readOnly = true;
+      lastRegTodo.readOnly = true;
     }
   });
 
   //Create delete button
   const buttonDelete = document.querySelector(".btn-delete");
+
   //   buttonDelete.type = "button";
   //   const deleteIcon = document.createElement("i");
   //   deleteIcon.classList.add("fas", "fa-times", "fa-2x");
   //   buttonDelete.appendChild(deleteIcon);
 
   //Delete button event
-  buttonDelete.addEventListener("click", () => {
-    listElement.remove();
+  lastDelBtn.addEventListener("click", () => {
+    lastListEl.remove();
   });
 
   //Append all previous objects to listelement
