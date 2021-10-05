@@ -23,68 +23,88 @@ function loadTodos() {
     });
   }
 }
-// Add todo
+
 function addTodo(inputValue, completed = false) {
-  const template = document.getElementById("li-template");
-  const uList = document.getElementById("todos");
-  if(completed) {
-    template.classList.add("completed");
-  }
+  //Create listelement
+  const listElement = document.createElement("li");
 
-  const listObjects = document.querySelectorAll("li");
-  const numberOfListObjects = listObjects.length;
-  // if (numberOfListObjects === 0) {
-    uList.appendChild(template.cloneNode(true).content);
-  // } else {
-    // uList.append(template.cloneNode(true).content);
-  // 
-  let checkboxes = document.querySelectorAll(".completed-box");
-  let lastChkBox = checkboxes[checkboxes.length - 1];
+  //Create container for todos and delete and checkbox
+  const container = document.createElement("div");
+  container.classList.add("list-object");
+  //Create checkbox for mark as complete
+  const checkboxContainer = document.createElement("span");
 
-  let deletButtons = document.querySelectorAll(".btn-delete");
-  let lastDelBtn = deletButtons[deletButtons.length - 1];
-
-  let listElements = document.querySelectorAll("li");
-  let lastListEl = listElements[listElements.length - 1];
-
-  let regTodos = document.querySelectorAll(".reg-todo");
-  let lastRegTodo = regTodos[regTodos.length - 1];
-
-  let checkmarks = document.querySelectorAll(".checkmark");
-  let lastCheckmark = checkmarks[checkmarks.length - 1];
-
-  lastChkBox.addEventListener("click", () => {
-    // Toggle completed
-    lastListEl.classList.toggle("completed");
-    lastCheckmark.classList.toggle("checkedmark");
+  checkboxContainer.classList.add("checkbox-container");
+  //An empty checkbox
+  const checkbox = document.createElement("input");
+  checkbox.setAttribute("type", "checkbox");
+  checkbox.classList.add("completed-box");
+  checkboxContainer.appendChild(checkbox);
+  //Completed checkbox
+  const checkMark = document.createElement("span");
+  checkMark.classList.add("checkmark");
+  const icon = document.createElement("i");
+  icon.classList.add("fas", "fa-check");
+  checkMark.appendChild(icon);
+  //Append children to element
+  checkboxContainer.appendChild(checkbox);
+  checkboxContainer.appendChild(checkMark);
+  checkbox.addEventListener("click", () => {
+    listElement.classList.toggle("completed");
+    checkMark.classList.toggle("checkedmark");
 
     updateTodo();
   });
 
-  lastRegTodo.value = inputValue;
-  lastRegTodo.readOnly = true;
-  lastRegTodo.addEventListener("dblclick", () => {
+  if (completed) {
+    listElement.classList.add("completed");
+    checkMark.classList.toggle("checkedmark");
+  }
+
+  //Create input for input value
+  const inputTodo = document.createElement("input");
+  inputTodo.setAttribute("type", "text");
+  inputTodo.classList.add("reg-todo");
+  inputTodo.value = inputValue;
+  inputTodo.readOnly = true;
+  inputTodo.addEventListener("dblclick", () => {
     // inputTodo.removeAttribute("readOnly");
-    lastRegTodo.readOnly = false;
+    inputTodo.readOnly = false;
   });
-  lastRegTodo.addEventListener("focusout", () => {
-    lastRegTodo.readOnly = true;
+  inputTodo.addEventListener("focusout", () => {
+    inputTodo.readOnly = true;
   });
-  lastRegTodo.addEventListener("keyup", (e) => {
+  inputTodo.addEventListener("keyup", (e) => {
     if (e.key === "Enter") {
-      lastRegTodo.readOnly = true;
+      inputTodo.readOnly = true;
     }
   });
 
+  //Create delete button
+  const buttonDelete = document.createElement("button");
+  buttonDelete.classList.add("btn-delete");
+  buttonDelete.type = "button";
+  const deleteIcon = document.createElement("i");
+  deleteIcon.classList.add("fas", "fa-times", "fa-2x");
+  buttonDelete.appendChild(deleteIcon);
   //Delete button event
-  lastDelBtn.addEventListener("click", () => {
-    lastListEl.remove();
+  buttonDelete.addEventListener("click", () => {
+    listElement.remove();
   });
+
+  //Append all previous objects to listelement
+  container.appendChild(checkboxContainer);
+  container.appendChild(inputTodo);
+  container.appendChild(buttonDelete);
+
+  //Apend to list of todos
+  listElement.appendChild(container);
+  todos.appendChild(listElement);
 
   updateTodo();
 
-  document.getElementById("complete-all-btn").style.opacity = 1;
-  input.value = "";
+  // document.getElementById("complete-all-btn").style.opacity = 0.4;
+  // input.value = "";
 }
 
 // Update todo list
@@ -240,6 +260,7 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   addTodo(input.value);
+  input.value = "";
 });
 
 buttonCompleteAll.addEventListener("click", toggleAllTodos);
@@ -249,7 +270,6 @@ buttonFilterActive.addEventListener("click", filterByActive);
 buttonFilterCompleted.addEventListener("click", filterByCompleted);
 window.addEventListener("hashchange", (e) => {
   const hash = location.hash.toString().substring(1);
-  console.log(hash);
   if (hash === "active") {
     filterByActive();
   } else if (hash === "completed") {
