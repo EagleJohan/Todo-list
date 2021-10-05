@@ -27,14 +27,17 @@ function loadTodos() {
 function addTodo(inputValue, completed = false) {
   const template = document.getElementById("li-template");
   const uList = document.getElementById("todos");
+  if(completed) {
+    template.classList.add("completed");
+  }
 
   const listObjects = document.querySelectorAll("li");
   const numberOfListObjects = listObjects.length;
-  if (numberOfListObjects === 0) {
+  // if (numberOfListObjects === 0) {
     uList.appendChild(template.cloneNode(true).content);
-  } else {
-    uList.append(template.cloneNode(true).content);
-  }
+  // } else {
+    // uList.append(template.cloneNode(true).content);
+  // 
   let checkboxes = document.querySelectorAll(".completed-box");
   let lastChkBox = checkboxes[checkboxes.length - 1];
 
@@ -222,7 +225,6 @@ function removeAllCompleted() {
 
 function onHash() {
   const hash = location.hash.toString().substring(1);
-  console.log(hash);
   if (hash === "active") {
     filterByActive();
   } else if (hash === "completed") {

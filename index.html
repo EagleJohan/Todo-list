@@ -24,18 +24,6 @@
         <input type="text" name="todo" id="input-todo" placeholder="What needs to be done?" autocomplete="off"/>
       </form>
       <ul id="todos">
-        <template id="li-template">
-          <li>
-            <form class="list-object">
-              <label for="completed-box" class="checkbox-container" >
-                  <input type="checkbox" name="completed-box" class="completed-box">
-                  <span class="checkmark"><i class="fas fa-check"></i></span>
-              </label>
-              <input type="text" name="reg-todo" class="reg-todo">
-              <button class="btn-delete" type="button"><i class="fas fa-times fa-2x"></i></button>
-            </form>
-          </li>
-        </template>
       </ul>
       <div id="footer" class="hidden">
         <span id="todos-remaining" class="footerbtn">0 item left</span>
@@ -47,7 +35,7 @@
         <button id="clear-completed" class="footerbtn invisible">Clear completed</button>
       </div>
     </div>
-
+    
     <footer>
       <p>
         <small class="footer-light">Double-click to edit a todo</small>
@@ -57,9 +45,22 @@
       </p>
       <p>
         <small
-          ><span class="footer-light">Part</span> of <a href="https://teknikhogskolan.se/">PUVSNV21</a></small
+        ><span class="footer-light">Part</span> of <a href="https://teknikhogskolan.se/">PUVSNV21</a></small
         >
       </p>
     </footer>
+    <!-- template -->
+    <template id="li-template">
+      <li>
+        <div class="list-object">
+          <span for="completed-box" class="checkbox-container" >
+              <input type="checkbox" name="completed-box" class="completed-box">
+              <span class="checkmark"><i class="fas fa-check"></i></span>
+          </span>
+          <input type="text" name="reg-todo" class="reg-todo">
+          <button class="btn-delete" type="button"><i class="fas fa-times fa-2x"></i></button>
+        </div>
+      </li>
+    </template>
   </body>
 </html>
