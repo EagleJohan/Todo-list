@@ -220,6 +220,18 @@ function removeAllCompleted() {
   updateTodo();
 }
 
+function onHash() {
+  const hash = location.hash.toString().substring(1);
+  console.log(hash);
+  if(hash === "active") {
+    filterByActive();
+  } else if(hash === "completed") {
+    filterByCompleted();
+  } else {
+    removeFilter();
+  }
+}
+
 /*==========Event handlers==========*/
 // Submit form
 form.addEventListener("submit", (e) => {
@@ -233,6 +245,7 @@ buttonCompleteAll.addEventListener("click", toggleAllTodos);
 buttonFilterNone.addEventListener("click", removeFilter);
 buttonFilterActive.addEventListener("click", filterByActive);
 buttonFilterCompleted.addEventListener("click", filterByCompleted);
+<<<<<<< HEAD
 window.addEventListener("hashchange", (e) => {
   const hash = location.hash.toString().substring(1);
   console.log(hash);
@@ -244,6 +257,11 @@ window.addEventListener("hashchange", (e) => {
     removeFilter();
   }
 });
+=======
+window.addEventListener("hashchange", onHash)
+window.addEventListener("load", onHash);
+
+>>>>>>> dcd315b28c5ab6e94aa815f9f78a6e0e95da66d8
 
 buttonClearCompleted.addEventListener("click", removeAllCompleted);
 
