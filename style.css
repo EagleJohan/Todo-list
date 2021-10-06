@@ -152,6 +152,11 @@ h1 {
   opacity: 1;
 }
 
+li.completed input{
+  color: var(--color-text-light);
+  text-decoration: line-through;
+}
+
 /* ================= todo footer ====================== */
 #footer {
   display: none;
