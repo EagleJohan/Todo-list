@@ -60,25 +60,6 @@ function addTodo(inputValue, completed = false) {
     checkMark.classList.toggle("checkedmark");
   }
 
-  //Create input for input value
-  const inputTodo = document.createElement("input");
-  inputTodo.setAttribute("type", "text");
-  inputTodo.classList.add("reg-todo");
-  inputTodo.value = inputValue;
-  inputTodo.readOnly = true;
-  inputTodo.addEventListener("dblclick", () => {
-    // inputTodo.removeAttribute("readOnly");
-    inputTodo.readOnly = false;
-  });
-  inputTodo.addEventListener("focusout", () => {
-    inputTodo.readOnly = true;
-  });
-  inputTodo.addEventListener("keyup", (e) => {
-    if (e.key === "Enter") {
-      inputTodo.readOnly = true;
-    }
-  });
-
   //Create delete button
   const buttonDelete = document.createElement("button");
   buttonDelete.classList.add("btn-delete");
@@ -90,6 +71,34 @@ function addTodo(inputValue, completed = false) {
   buttonDelete.addEventListener("click", () => {
     listElement.remove();
     updateTodo();
+  });
+
+  //Create input for input value
+  const inputTodo = document.createElement("input");
+  inputTodo.setAttribute("type", "text");
+  inputTodo.classList.add("reg-todo");
+  inputTodo.value = inputValue;
+  inputTodo.readOnly = true;
+  inputTodo.addEventListener("dblclick", () => {
+    // inputTodo.removeAttribute("readOnly");
+    inputTodo.readOnly = false;
+    //Hide checkbox and deletebutton
+    buttonDelete.style.display = "none";
+    checkboxContainer.style.visibility = "hidden";
+  });
+  inputTodo.addEventListener("focusout", () => {
+    inputTodo.readOnly = true;
+
+    buttonDelete.style.display = "inline-block";
+    checkboxContainer.style.visibility = "visible";
+  });
+  inputTodo.addEventListener("keyup", (e) => {
+    if (e.key === "Enter") {
+      inputTodo.readOnly = true;
+
+      buttonDelete.style.display = "inline-block";
+      checkboxContainer.style.visibility = "visible";
+    }
   });
 
   //Append all previous objects to listelement
@@ -139,7 +148,7 @@ function updateTodo() {
     buttonCompleteAll.style.opacity = "0";
   }
 
-  if(completedElements > 0){
+  if (completedElements > 0) {
     buttonCompleteAll.style.opacity = "1";
   }
 
@@ -161,7 +170,6 @@ function updateTodo() {
   });
 
   //Toggle between completed all icon
-
 }
 
 // Toggle all todos as completed

@@ -110,7 +110,6 @@ h1 {
   opacity: 0;
   z-index: 2;
   cursor: pointer;
-
 }
 
 .checkmark {
@@ -125,7 +124,6 @@ h1 {
   font-size: 1.5rem;
   color: green;
   cursor: pointer;
-
 }
 .checkedmark {
   opacity: 0.6;
@@ -142,6 +140,8 @@ h1 {
 }
 .reg-todo:focus {
   outline: none;
+  color: var(--color-text-dark) !important;
+  text-decoration: none !important;
 }
 .btn-delete {
   margin: 0 1rem 0 3rem;
@@ -149,16 +149,12 @@ h1 {
   background-color: white;
   border: none;
   font-size: 0.8rem;
-  opacity: 1;
+  opacity: 0;
 }
 
-li.completed input{
+li.completed .reg-todo {
   color: var(--color-text-light);
   text-decoration: line-through;
-}
-
-li .btn-delete{
-  opacity: 0;
 }
 
 li:hover .btn-delete {
