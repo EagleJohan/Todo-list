@@ -157,6 +157,18 @@ li.completed input{
   text-decoration: line-through;
 }
 
+li .btn-delete{
+  opacity: 0;
+}
+
+li:hover .btn-delete {
+  opacity: 0.5;
+}
+
+li:hover .btn-delete:hover {
+  opacity: 1;
+}
+
 /* ================= todo footer ====================== */
 #footer {
   display: none;
