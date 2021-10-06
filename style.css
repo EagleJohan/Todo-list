@@ -154,7 +154,7 @@ h1 {
 
 /* ================= todo footer ====================== */
 #footer {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   width: 34rem;

@@ -9,7 +9,6 @@ const buttonFilterActive = document.getElementById("filter-active");
 const buttonFilterCompleted = document.getElementById("filter-completed");
 const todosRemaining = document.getElementById("todos-remaining");
 const buttonClearCompleted = document.getElementById("clear-completed");
-const count = 0;
 
 /*==========Functions==========*/
 
@@ -55,7 +54,7 @@ function addTodo(inputValue, completed = false) {
 
     updateTodo();
   });
-
+  //Add completed classes if completed
   if (completed) {
     listElement.classList.add("completed");
     checkMark.classList.toggle("checkedmark");
@@ -90,6 +89,7 @@ function addTodo(inputValue, completed = false) {
   //Delete button event
   buttonDelete.addEventListener("click", () => {
     listElement.remove();
+    updateTodo();
   });
 
   //Append all previous objects to listelement
@@ -130,16 +130,24 @@ function updateTodo() {
   //Update todos remaining
   todosRemaining.textContent = `${count} item${count > 1 ? "s" : ""} left`;
 
-  //If there is any todo, remove hidden class from footer
+  //If there is any todo, toggle visibility styling
   if (listElements.length > 0) {
-    footer.classList.remove("hidden");
+    footer.style.display = "flex";
+    buttonCompleteAll.style.opacity = "0.4";
+  } else {
+    footer.style.display = "none";
+    buttonCompleteAll.style.opacity = "0";
   }
 
-  //If there is a completed todo, remove hidden from clear-completed
+  if(completedElements > 0){
+    buttonCompleteAll.style.opacity = "1";
+  }
+
+  //If there is a completed todo, change visibility styling
   if (completedElements > 0) {
-    buttonClearCompleted.classList.remove("invisible");
+    buttonClearCompleted.style.visibility = "visible";
   } else {
-    buttonClearCompleted.classList.add("invisible");
+    buttonClearCompleted.style.visibility = "hidden";
   }
 
   //Checks the checkbox if it is completed
@@ -151,6 +159,9 @@ function updateTodo() {
       element.children[0].children[0].checked = false;
     }
   });
+
+  //Toggle between completed all icon
+
 }
 
 // Toggle all todos as completed
