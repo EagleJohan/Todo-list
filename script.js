@@ -91,6 +91,7 @@ function addTodo(inputValue, completed = false) {
 
     buttonDelete.style.display = "inline-block";
     checkboxContainer.style.visibility = "visible";
+    updateTodo();
   });
   inputTodo.addEventListener("keyup", (e) => {
     if (e.key === "Enter") {
@@ -98,6 +99,7 @@ function addTodo(inputValue, completed = false) {
 
       buttonDelete.style.display = "inline-block";
       checkboxContainer.style.visibility = "visible";
+      updateTodo();
     }
   });
 
