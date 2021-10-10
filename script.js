@@ -112,8 +112,6 @@ function addTodo(inputValue, completed = false) {
 
   updateTodo();
 
-  // document.getElementById("complete-all-btn").style.opacity = 0.4;
-  // input.value = "";
 }
 
 // Update todo list
