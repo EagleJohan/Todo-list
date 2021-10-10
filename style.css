@@ -1,5 +1,5 @@
 /* ================= imported fonts ====================== */
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;1,100&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;1,100&display=swap"); */
 
 /* ================= reset ====================== */
 * {
@@ -17,7 +17,7 @@
   --color-text-dark: #4d4d4d;
   --color-text-light: #bfbfbf;
 
-  --ff-all-text: "Roboto", sans-serif;
+  --ff-all-text: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 /* ================= elements ====================== */
@@ -35,6 +35,7 @@ h1 {
 }
 
 /* ================= enter todo's form ====================== */
+
 #form {
   display: flex;
   align-items: center;
@@ -44,6 +45,7 @@ h1 {
   margin: 0 auto;
   background-color: white;
   border: 1px solid rgba(192, 192, 192, 0.4);
+  box-shadow: 0 0.2rem 0.3rem #72727264;
 }
 
 #complete-all-btn {
@@ -225,7 +227,7 @@ footer {
   color: var(--color-text-light);
   font-family: var(--ff-all-text);
   font-weight: 100;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: var(--color-text-dark);
 }
 .footer-light {
