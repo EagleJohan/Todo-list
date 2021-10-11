@@ -7,7 +7,7 @@
   padding: 0;
   font-family: inherit;
   box-sizing: border-box;
-  outline: 1px solid darkslategray;
+  /* outline: 1px solid darkslategray; */
 }
 
 /* ================= custom properties ====================== */
@@ -23,18 +23,23 @@
 /* ================= elements ====================== */
 body {
   background-color: var(--color-background);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  margin: 0 auto;
+  max-width: 34rem;
 }
 
 h1 {
   font-family: var(--ff-all-text);
   font-size: 6.3rem;
   font-weight: 100;
+  text-align: center;
   padding: 1rem 0 0.3rem 0;
   color: var(--color-header);
+}
+/* ===============================================ändring jonas====== */
+@media (max-width: 20rem) {
+  h1 {
+    font-size: 4rem;
+  }
 }
 #content-container {
   box-shadow: 0 0.2rem 0.3rem #72727264;
@@ -46,7 +51,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 34rem;
+  width: 100%;
   height: 4.5rem;
   background-color: white;
   border: 1px solid rgba(192, 192, 192, 0.4);
@@ -87,7 +92,7 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 34rem;
+  width: 100%;
   height: 4.5rem;
   background-color: white;
   border: 1px solid rgba(192, 192, 192, 0.4);
@@ -144,7 +149,7 @@ h1 {
   font-weight: 100;
   font-size: 1.5rem;
   color: var(--color-text-dark);
-  width: 25rem;
+  width: 60%;
   border: none;
   padding-left: 0.5rem;
   box-shadow: none;
@@ -154,7 +159,7 @@ h1 {
   font-size: 1.5rem;
   font-weight: 100;
   font-family: var(--ff-all-text);
-  width: 34rem;
+  width: 100%;
   padding: 1.3rem 0 1.3rem 0.5rem;
   box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
 }
@@ -192,7 +197,7 @@ li:hover .btn-delete:hover {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  width: 34rem;
+  width: 100%;
   height: 3rem;
   background-color: white;
   border: 1px solid rgba(192, 192, 192, 0.4);
@@ -201,8 +206,8 @@ li:hover .btn-delete:hover {
   font-weight: 100;
   font-size: 0.9rem;
   box-shadow: 0 0.6rem 0rem -0.3rem rgb(249, 249, 249),
-    0 0.62rem 0 -0.29rem #bfbfbf, 0 1.25rem 0rem -0.6rem rgb(249, 249, 249),
-    0 1.27rem 0 -0.59rem #bfbfbf;
+    0 0.62rem 0 -0.27em #bfbfbf, 0 1.25rem 0rem -0.6rem rgb(249, 249, 249),
+    0 1.27rem 0 -0.57rem #bfbfbf;
 }
 #filter-todos {
   display: flex;
@@ -223,11 +228,14 @@ li:hover .btn-delete:hover {
 #filter-active:hover,
 #filter-completed:hover {
   outline: 1px solid var(--color-header);
+  border-radius: 0.2rem;
 }
+/* ===============================================ändring jonas====== */
 #filter-all:focus,
 #filter-active:focus,
 #filter-completed:focus {
-  outline: 1px solid rgb(175, 47, 47);
+  outline: 1px solid rgba(175, 47, 47, 0.324);
+  border-radius: 0.2rem;
 }
 #todos-remaining {
   padding-left: 1rem;
@@ -241,6 +249,7 @@ li:hover .btn-delete:hover {
   text-decoration: underline;
 }
 
+/* ===============================================ändring jonas====== */
 @media (max-width: 25rem) {
   #footer {
     height: 3.5rem;
@@ -248,15 +257,18 @@ li:hover .btn-delete:hover {
   #filter-todos {
     order: 3;
     justify-self: center;
-    margin: 0 10rem;
   }
   #todos-remaining {
     order: 1;
-    justify-self: flex-start;
+    justify-self: flex-end;
+    width: 50%;
+    flex-grow: 0;
   }
   #clear-completed {
     order: 2;
-    justify-self: flex-end;
+    justify-self: flex-start;
+    width: 50%;
+    padding: 0;
   }
 }
 
