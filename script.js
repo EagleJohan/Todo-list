@@ -169,7 +169,11 @@ function updateTodo() {
     }
   });
 
-  //Toggle between completed all icon
+  listElements.forEach(element => {
+    if(element.children[0].children[1].value.length < 1){
+      element.remove();
+    }
+  })
 }
 
 // Toggle all todos as completed
