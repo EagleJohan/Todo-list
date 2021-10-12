@@ -77,7 +77,7 @@ function addTodo(inputValue, completed = false) {
   const inputTodo = document.createElement("input");
   inputTodo.setAttribute("type", "text");
   inputTodo.classList.add("reg-todo");
-  inputTodo.value = inputValue;
+  inputTodo.setAttribute("value", inputValue);
   inputTodo.readOnly = true;
   inputTodo.addEventListener("dblclick", () => {
     // inputTodo.removeAttribute("readOnly");
@@ -91,6 +91,8 @@ function addTodo(inputValue, completed = false) {
 
     buttonDelete.style.display = "inline-block";
     checkboxContainer.style.visibility = "visible";
+    inputTodo.setAttribute("value", inputTodo.value);
+
     updateTodo();
   });
   inputTodo.addEventListener("keyup", (e) => {
@@ -99,6 +101,8 @@ function addTodo(inputValue, completed = false) {
 
       buttonDelete.style.display = "inline-block";
       checkboxContainer.style.visibility = "visible";
+      inputTodo.setAttribute("value", inputTodo.value);
+
       updateTodo();
     }
   });
@@ -113,7 +117,6 @@ function addTodo(inputValue, completed = false) {
   todos.appendChild(listElement);
 
   updateTodo();
-
 }
 
 // Update todo list
@@ -169,11 +172,11 @@ function updateTodo() {
     }
   });
 
-  listElements.forEach(element => {
-    if(element.children[0].children[1].value.length < 1){
+  listElements.forEach((element) => {
+    if (element.children[0].children[1].value.length < 1) {
       element.remove();
     }
-  })
+  });
 }
 
 // Toggle all todos as completed
