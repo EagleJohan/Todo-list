@@ -1,0 +1,17 @@
+C:\Users\Johan\source\repos\EdgeDriverTest\bin\Debug\netcoreapp2.1\testhost.exe
+C:\Users\Johan\source\repos\EdgeDriverTest\bin\Debug\netcoreapp2.1\testhost.dll
+C:\Users\Johan\source\repos\EdgeDriverTest\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Johan\source\repos\EdgeDriverTest\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Johan\source\repos\EdgeDriverTest\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Johan\source\repos\EdgeDriverTest\bin\Debug\netcoreapp2.1\EdgeDriverTest.deps.json
+C:\Users\Johan\source\repos\EdgeDriverTest\bin\Debug\netcoreapp2.1\EdgeDriverTest.runtimeconfig.json
+C:\Users\Johan\source\repos\EdgeDriverTest\bin\Debug\netcoreapp2.1\EdgeDriverTest.runtimeconfig.dev.json
+C:\Users\Johan\source\repos\EdgeDriverTest\bin\Debug\netcoreapp2.1\EdgeDriverTest.dll
+C:\Users\Johan\source\repos\EdgeDriverTest\bin\Debug\netcoreapp2.1\EdgeDriverTest.pdb
+C:\Users\Johan\source\repos\EdgeDriverTest\obj\Debug\netcoreapp2.1\EdgeDriverTest.csprojAssemblyReference.cache
+C:\Users\Johan\source\repos\EdgeDriverTest\obj\Debug\netcoreapp2.1\EdgeDriverTest.AssemblyInfoInputs.cache
+C:\Users\Johan\source\repos\EdgeDriverTest\obj\Debug\netcoreapp2.1\EdgeDriverTest.AssemblyInfo.cs
+C:\Users\Johan\source\repos\EdgeDriverTest\obj\Debug\netcoreapp2.1\EdgeDriverTest.csproj.CoreCompileInputs.cache
+C:\Users\Johan\source\repos\EdgeDriverTest\obj\Debug\netcoreapp2.1\EdgeDriverTest.dll
+C:\Users\Johan\source\repos\EdgeDriverTest\obj\Debug\netcoreapp2.1\EdgeDriverTest.pdb
+C:\Users\Johan\source\repos\EdgeDriverTest\obj\Debug\netcoreapp2.1\EdgeDriverTest.genruntimeconfig.cache
