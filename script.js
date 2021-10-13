@@ -135,6 +135,7 @@ function updateTodo() {
   const todosArray = [];
 
   listElements.forEach((element) => {
+    //Delete empty elements
     if (element.children[0].children[1].value === "") {
       element.remove();
       listElements = document.querySelectorAll(".list-todo");
