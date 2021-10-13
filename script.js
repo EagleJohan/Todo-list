@@ -28,7 +28,8 @@ function loadTodos() {
 }
 
 function addTodo(inputValue, completed = false) {
-  if(inputValue === ""){
+  if (inputValue === "") {
+    // break if empty string
     return;
   }
   //Create listelement
@@ -109,13 +110,10 @@ function addTodo(inputValue, completed = false) {
       buttonDelete.style.display = "inline-block";
       checkboxContainer.style.visibility = "visible";
       inputTodo.setAttribute("value", inputTodo.value);
-
       updateTodo();
     }
   });
-  // inputTodo.addEventListener("change", () => {
-  //   updateTodo();
-  // });
+  inputTodo.addEventListener("change", updateTodo);
 
   //Append all previous objects to listelement
   container.appendChild(checkboxContainer);
@@ -132,15 +130,19 @@ function addTodo(inputValue, completed = false) {
 // Update todo list
 function updateTodo() {
   //Get all list elements from unordered list
-  const listElements = document.querySelectorAll(".list-todo");
+  let listElements = document.querySelectorAll(".list-todo");
 
   const todosArray = [];
 
   listElements.forEach((element) => {
+    if (element.children[0].children[1].value === "") {
+      element.remove();
+      listElements = document.querySelectorAll(".list-todo");
+    }
     todosArray.push({
       text: element.children[0].children[1].value,
-      completed: element.classList.contains("completed") ? true : false,
-    });
+        completed: element.classList.contains("completed") ? true : false,
+      });
   });
 
   localStorage.setItem("todos", JSON.stringify(todosArray));
@@ -151,7 +153,6 @@ function updateTodo() {
 
   //Update todos remaining
   todosRemaining.textContent = `${count} item${count > 1 ? "s" : ""} left`;
-
   //If there is any todo, toggle visibility styling
   if (listElements.length > 0) {
     footer.style.display = "flex";
