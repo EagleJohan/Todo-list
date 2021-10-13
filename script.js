@@ -231,12 +231,12 @@ function removeFilter() {
   });
 
   location.hash = "";
-
+  buttonFilterNone.classList.add("selected");
   updateTodo();
 }
 // Filter by active
 function filterByActive() {
-  const listElement = document.querySelectorAll("li");
+  const listElement = document.querySelectorAll(".list-todo");
 
   listElement.forEach((element) => {
     if (element.classList.contains("completed")) {
@@ -246,12 +246,13 @@ function filterByActive() {
     }
   });
   location.hash = "active";
+  buttonFilterActive.classList.add("selected");
 
   updateTodo();
 }
 // Filter by completed
 function filterByCompleted() {
-  const listElement = document.querySelectorAll("li");
+  const listElement = document.querySelectorAll(".list-todo");
 
   listElement.forEach((element) => {
     if (!element.classList.contains("completed")) {
@@ -261,12 +262,13 @@ function filterByCompleted() {
     }
   });
 
+  buttonFilterCompleted.classList.add("selected");
   location.hash = "completed";
   updateTodo();
 }
 // Clear all marked as completed
 function removeAllCompleted() {
-  const listElement = document.querySelectorAll("li");
+  const listElement = document.querySelectorAll(".list-todo");
 
   listElement.forEach((element) => {
     if (element.classList.contains("completed")) {
@@ -301,7 +303,10 @@ buttonCompleteAll.addEventListener("click", toggleAllTodos);
 buttonFilterNone.addEventListener("click", removeFilter);
 buttonFilterActive.addEventListener("click", filterByActive);
 buttonFilterCompleted.addEventListener("click", filterByCompleted);
-window.addEventListener("hashchange", (e) => {
+window.addEventListener("hashchange", () => {
+  buttonFilterNone.classList.remove("selected");
+  buttonFilterActive.classList.remove("selected");
+  buttonFilterCompleted.classList.remove("selected");
   const hash = location.hash.toString().substring(1);
   if (hash === "active") {
     filterByActive();
