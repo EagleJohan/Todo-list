@@ -22,18 +22,13 @@ namespace EdgeDriverTest
         }
 
         [TestMethod]
-        public void BrowserTitle()
-        {
-            Assert.AreEqual("Todolist", browser.Title);
-        }
-        [TestMethod]
         public void AddTodo()
         {
             var input = browser.FindElement(By.Id("input-todo"));
             input.SendKeys("Test one");
             input.SendKeys(Keys.Enter);
 
-            var count = browser.FindElements(By.TagName("li")).Count;
+            var count = browser.FindElements(By.ClassName(".list-todo")).Count;
             Assert.AreEqual(count, 1);
         }
         [TestMethod]
