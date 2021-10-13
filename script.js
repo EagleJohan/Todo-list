@@ -13,20 +13,24 @@ const buttonClearCompleted = document.getElementById("clear-completed");
 /*==========Functions==========*/
 
 function loadTodos() {
-  const localTodos = JSON.parse(localStorage.getItem("todos"));
-  if (localTodos.length > 0) {
-    localTodos.forEach((item) => {
-      if (item.text.length > 0) {
-        addTodo(item.text, item.completed);
-      }
-    });
+  if (localStorage.getItem("todos") === null) {
+  } else {
+    const localTodos = JSON.parse(localStorage.getItem("todos"));
+
+    if (localTodos.length > 0) {
+      localTodos.forEach((item) => {
+        if (item.text.length > 0) {
+          addTodo(item.text, item.completed);
+        }
+      });
+    }
   }
 }
 
 function addTodo(inputValue, completed = false) {
   //Create listelement
   const listElement = document.createElement("li");
-
+  listElement.classList.add("list-todo");
   //Create container for todos and delete and checkbox
   const container = document.createElement("div");
   container.classList.add("list-object");
@@ -106,6 +110,9 @@ function addTodo(inputValue, completed = false) {
       updateTodo();
     }
   });
+  // inputTodo.addEventListener("change", () => {
+  //   updateTodo();
+  // });
 
   //Append all previous objects to listelement
   container.appendChild(checkboxContainer);
@@ -122,7 +129,7 @@ function addTodo(inputValue, completed = false) {
 // Update todo list
 function updateTodo() {
   //Get all list elements from unordered list
-  const listElements = document.querySelectorAll("li");
+  const listElements = document.querySelectorAll(".list-todo");
 
   const todosArray = [];
 
