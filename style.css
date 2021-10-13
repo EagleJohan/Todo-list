@@ -1,19 +1,15 @@
-/* ================= imported fonts ====================== */
-/* @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,500;1,100&display=swap"); */
-
 /* ================= reset ====================== */
 * {
   margin: 0;
   padding: 0;
-  font-family: inherit;
+  font-family: var(--ff-all-text);
   box-sizing: border-box;
-  /* outline: 1px solid darkslategray; */
 }
 
 /* ================= custom properties ====================== */
 :root {
-  --color-background: #f5f5f5;
   --color-header: rgba(175, 47, 47, 0.15);
+  --color-background: #f5f5f5;
   --color-text-dark: #4d4d4d;
   --color-text-light: #9f9f9f;
 
@@ -29,14 +25,12 @@ body {
 }
 
 h1 {
-  font-family: var(--ff-all-text);
   font-size: 6.3rem;
   font-weight: 100;
   text-align: center;
   padding: 1rem 0 0.3rem 0;
   color: var(--color-header);
 }
-/* ===============================================ändring jonas====== */
 @media (max-width: 20rem) {
   h1 {
     font-size: 4rem;
@@ -45,8 +39,6 @@ h1 {
 #content-container {
   box-shadow: 0 0.2rem 0.3rem #72727264;
 }
-
-/* ================= enter todo's form ====================== */
 
 #form {
   display: flex;
@@ -166,8 +158,6 @@ h1 {
 }
 .reg-todo:focus {
   outline: none;
-  /* color: var(--color-text-dark) !important;
-  text-decoration: none !important; */
 }
 
 .btn-delete {
