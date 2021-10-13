@@ -28,6 +28,9 @@ function loadTodos() {
 }
 
 function addTodo(inputValue, completed = false) {
+  if(inputValue === ""){
+    return;
+  }
   //Create listelement
   const listElement = document.createElement("li");
   listElement.classList.add("list-todo");
@@ -158,7 +161,7 @@ function updateTodo() {
     buttonCompleteAll.style.opacity = "0";
   }
 
-  if (completedElements > 0) {
+  if (completedElements === listElements.length && completedElements > 0) {
     buttonCompleteAll.style.opacity = "1";
   }
 
@@ -189,7 +192,7 @@ function updateTodo() {
 // Toggle all todos as completed
 function toggleAllTodos() {
   //Get all list elements from unordered list
-  const listElements = document.querySelectorAll("li");
+  const listElements = document.querySelectorAll(".list-todo");
   const countCompletedElements = document.querySelectorAll(".completed").length;
 
   //if all elements is not completed
@@ -222,7 +225,7 @@ function toggleAllTodos() {
 
 // No filter
 function removeFilter() {
-  const listElement = document.querySelectorAll("li");
+  const listElement = document.querySelectorAll(".list-todo");
 
   listElement.forEach((element) => {
     if (element.classList.contains("hidden")) {
